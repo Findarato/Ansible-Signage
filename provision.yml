@@ -10,3 +10,4 @@
   roles:
     - signage
     - snmpd
+    - reboot

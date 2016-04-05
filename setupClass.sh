@@ -1,2 +1,1 @@
-ansible-playbook ./setupClass.yaml -l itClassroom
-
+ansible-playbook ./setupClass.yml -l itClassroom

@@ -1,1 +1,1 @@
-ansible-playbook ./shutdownClass.yaml -i hosts
+ansible-playbook ./shutdownClass.yml -i hosts

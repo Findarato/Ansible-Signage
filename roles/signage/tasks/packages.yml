@@ -28,7 +28,7 @@
       - nano
       - python-pycurl
       - libc6
-      - libc6-dev      
+      - libc6-dev
     tags:
       - deploy
 
@@ -53,3 +53,27 @@
     tags:
       - deploy
       - chromeArm
+
+  - name: Delete autostart folder
+    file:
+      path: "/home/pi/.config/autostart"
+      state: absent
+
+  - name: Create Autostart folder
+    file:
+      path: "/home/pi/.config/autostart"
+      state: directory
+      mode: 755
+
+  - name: Setup Chrome Autostart
+    file:
+      src: "files/autoChromium.desktop"
+      dest: "/home/pi/.config/autostart/autoChromium.desktop"
+      state: present
+      mode: 755
+
+  - name: Deleting Chromium config folders
+    file:
+      path: "/home/pi/.config/chromium*"
+      state: absent
+      mode: 755
