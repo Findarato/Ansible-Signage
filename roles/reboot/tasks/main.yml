@@ -1,2 +1,2 @@
 ---
-- command: /sbin/shutdown -r now
+- command: reboot
