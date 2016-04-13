@@ -10,4 +10,8 @@
   roles:
     - signage
     - snmpd
+    - { role: geerlingguy.firewall }
     - reboot
+
+  vars_files:
+    - vars/firewall.yml  
