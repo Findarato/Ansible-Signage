@@ -6,20 +6,6 @@ echo itClassroom02 > hosts
 echo itClassroom03 > hosts
 echo itClassroom04 > hosts
 echo itClassroom05 > hosts
-echo itClassroom06 > hosts
-echo itClassroom07 > hosts
-echo itClassroom08 > hosts
-echo itClassroom09 > hosts
-echo itClassroom10 > hosts
-echo itClassroom11 > hosts
-echo itClassroom12 > hosts
-echo itClassroom13 > hosts
-echo itClassroom14 > hosts
-echo itClassroom15 > hosts
-echo itClassroom16 > hosts
-echo itClassroom17 > hosts
-echo itClassroom18 > hosts
-
 
 
 # grab IP addresses from hosts
@@ -38,9 +24,3 @@ done
 sort -u ~/.ssh/known_hosts > ~/.ssh/known_hosts.clean
 mv ~/.ssh/known_hosts ~/.ssh/known_hosts.backup
 cp ~/.ssh/known_hosts.clean ~/.ssh/known_hosts
-
-# make sure destination exists and is writable for rundeck user... This was erroring out with permission denied for rundeck user.
-#sudo mkdir /var/lib/rundeck/.ansible/
-#sudo chown -R rundeck:rundeck /var/lib/rundeck/.ansible/
-#cd /tmp/ansible
-#ansible-playbook -i hosts ansible-test.yml --user rundeck

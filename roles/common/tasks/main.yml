@@ -1,4 +1,11 @@
 ---
+
+- name: Create Symlink to make editing Autostart easier
+  file:
+      src: '.config/lxsession/LXDE-pi/autostart'
+      dest: '/home/pi/autostart'
+      state: link
+
 # Remove Files
 - apt: state=absent purge=yes name={{item}}
   with_items:
@@ -7,24 +14,18 @@
     - thunderbird
     - pidgin
 
-
-- apt: update_cache=yes
-
 # Install Files
 - apt: state=present name={{item}}
   with_items:
-   # Screensavers
-#    - xscreensaver-gl
-#    - xscreensaver-gl-extra
-#    - xscreensaver-screensaver-dizzy
-#    - xscreensaver-screensaver-webcollage
-#    - xscreensaver-data-extra
-#    - rss-glx
-    # Core Desktop Tools
     - python-software-properties
     - htop
-    - glances
-    - wget
-    - curl
-    - nano
-    - python-pycurl
+    - ufw
+
+- name: Allow OpenSSH though Firewall
+  ufw:
+    rule: allow
+    name: OpenSSH
+
+- name: Enableing UFW
+  ufw:
+    state: enabled

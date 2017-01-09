@@ -1,0 +1,16 @@
+---
+- name: "Deploy Signage setup on RASPBIAN JESSIE WITH PIXEL"
+  hosts: all
+  become: true
+  pre_tasks:
+    - name: Update apt cache if needed.
+      apt: update_cache=yes cache_valid_time=3600
+
+  roles:
+    - common
+    - ramdisk
+    # This is an optional Package to monitor your pi. Comment this to
+    # Disable the SNMP and NRPE monitoring
+    - monitoring
+#    - signage
+#    - reboot

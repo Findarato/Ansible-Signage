@@ -2,16 +2,15 @@
 
 [signage:children]
 thomas
-hageman
 
 [thomas]
-rpits[01:03].library.wpl.lib.in.us
+192.168.10.13
 
 [hageman]
-rpihs[01:01].library.wpl.lib.in.us
+
 
 [signage:vars]
 ansible_user=pi
-ansible_ssh_private_key_file=~/.ssh/remote
+ansible_ssh_private_key_file=~/.ssh/remote.pub
 deploy_target=pi
 host_key_checking=false

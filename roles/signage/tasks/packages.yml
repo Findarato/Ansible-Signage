@@ -1,89 +1,22 @@
 ---
-  - name: Remove unnessary Programs
-    apt: state=absent purge=yes name={{item}}
-    with_items:
-      - transmission
-      - hexchat
-      - thunderbird
-      - pidgin
-      - oracle-java8-jdk
+- name: Remove unnessary Programs
+  apt: state=absent purge=yes name={{item}}
+  with_items:
+      - libreoffice-*
       - wolfram-engine
-      - deluge
-      - gnome-user-guide
-      - yelp-xsl
-      - yelp
-      - minecraft*
-      - chromium-inspector
-      - iceweasel*
-    tags:
-      - deploy
-
-
-  - name: Install required signage packages
-    apt: state=present name={{ item }}
-    with_items:
-      - python-software-properties
+      - nuscratch
+      - penguinspuzzle
+      - piclone
       - htop
-      - wget
+      - gksu
+      - ephiphany-browser
+  tags:
+      - deploy
+
+- name: Install required signage packages
+  apt: state=present name={{ item }}
+  with_items:
       - curl
-      - nano
-      - python-pycurl
-      - libc6
-      - libc6-dev
-      - nodejs
-      - npm
-    tags:
+      - git
+  tags:
       - deploy
-
-  - name: Download Chrome Arm
-    get_url:
-      url: https://dl.dropboxusercontent.com/u/87113035/{{ item }}
-      dest: /home/pi/{{ item }}
-    with_items:
-      - chromium-browser-l10n_48.0.2564.82-0ubuntu0.15.04.1.1193_all.deb
-      - chromium-browser_48.0.2564.82-0ubuntu0.15.04.1.1193_armhf.deb
-      - chromium-codecs-ffmpeg-extra_48.0.2564.82-0ubuntu0.15.04.1.1193_armhf.deb
-    tags:
-      - deploy
-      - chromeArm
-
-  #- name: Install Chrome Arm
-  #  apt: deb=/home/pi/{{ item }}
-  #  with_items:
-  #    - chromium-browser_48.0.2564.82-0ubuntu0.15.04.1.1193_armhf.deb
-  #    - chromium-browser-l10n_48.0.2564.82-0ubuntu0.15.04.1.1193_all.deb
-  #    - chromium-codecs-ffmpeg-extra_48.0.2564.82-0ubuntu0.15.04.1.1193_armhf.deb
-  #  tags:
-  #    - deploy
-  #    - chromeArm
-
-  - name: Delete autostart folder
-    file:
-      path: "/home/pi/.config/autostart"
-      state: absent
-
-  - name: Create Autostart folder
-    file:
-      path: "/home/pi/.config/autostart"
-      state: directory
-      mode: 0755
-
-  - name: Setup Chrome Autostart
-    copy:
-      src: "files/autoChromium.desktop"
-      dest: "/home/pi/.config/autostart/autoChromium.desktop"
-      mode: 0755
-
-  - name: Deleting Chromium config folders
-    file:
-      path: "/home/pi/.config/chromium*"
-      state: absent
-
-  - name: Copy Disable Screensaver
-    copy:
-      src: "files/no_blank.sh"
-      dest: "/home/pi/no_blank.sh"
-      mode: 0755
-
-  - name: Run Disable Screensaver
-    script: "/home/pi/no_blank.sh"

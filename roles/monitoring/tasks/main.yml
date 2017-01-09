@@ -1,0 +1,53 @@
+- name: Install SNMP and SNMPD
+  apt:
+    state: present
+    name: "{{ item }}"
+  with_items:
+    - snmpd
+    - snmp
+
+- name: Allow Access to SNMP
+  lineinfile:
+    dest: "/etc/snmp/snmpd.conf"
+    regexp: '^agentAddress\s+udp:127\.0\.0\.1\:161'
+    line: "agentAddress 161"
+    state: present
+    backrefs: yes
+  notify: restart snmp
+
+- name: Allow public to access
+  lineinfile:
+    dest: "/etc/snmp/snmpd.conf"
+    regexp: '^#rocommunity\s+public\s+localhost'
+    line: "rocommunity public"
+    state: present
+    backrefs: yes
+  notify: restart snmp
+
+- name: Allow snmpd though Firewall
+  ufw:
+    rule: allow
+    proto: udp
+    port: 161
+
+- name: Install NRPE
+  apt:
+    state: present
+    name: "{{ item }}"
+  with_items:
+    - nagios-nrpe-server
+    - nagios-plugins
+
+- name: Allow public to access
+  lineinfile:
+    dest: "/etc/nagios/nrpe.cfg"
+    regexp: '^allowed_hosts=127.0.0.1'
+    line: "allowed_hosts=127.0.0.1,{{monitor_server}}"
+    state: present
+  notify: restart nrpe
+
+- name: Allow NRPE though Firewall
+  ufw:
+    rule: allow
+    proto: udp
+    port: 5666
