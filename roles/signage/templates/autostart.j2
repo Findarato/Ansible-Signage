@@ -5,8 +5,8 @@
 @xset s off
 @xset -dpms
 @xset s noblank
-
+@/home/pi/foldermap.sh
 @sed -i 's/"exited_cleanly": false/"exited_cleanly": true/' ~/.config/chromium/Default/Preferences
 
 
-@chromium-browser --noerrdialogs --kiosk --incognito {{signage_url}}
+@chromium-browser --test-type --ignore-certificate-errors --disable-restore-session-state --noerrdialogs --kiosk --incognito {{kiosk_url}}

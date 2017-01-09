@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Type=Application
-Exec=/usr/bin/chromium-browser --noerrdialogs --disable-session-crashed-bubble --disable-infobars -incognito --kiosk https://signage.wpl.lib.in.us
-Hidden=false
-X-GNOME-Autostart-enabled=true
-Name[en_US]=AutoChromium
-Name=AutoChromium
-Comment=Start Chromium when GNOME starts

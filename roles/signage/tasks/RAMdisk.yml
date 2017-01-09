@@ -16,13 +16,3 @@
     create: yes
     regexp: 'tmpfs  /mnt/cache tmpfs  nodev,nosuid,noexec,nodiratime,size=500M  0 0'
     line: 'tmpfs  /mnt/cache tmpfs  nodev,nosuid,noexec,nodiratime,size=500M  0 0'
-
-
-- name: Add foldermap to autostart
-  lineinfile:
-    dest: /home/pi/.config/lxsession/LXDE-pi/autostart
-    state: present
-    create: yes
-    regexp: '^@/home/pi/foldermap\.sh'
-    insertafter: '@xset s noblank'
-    line: '@/home/pi/foldermap.sh'

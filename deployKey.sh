@@ -2,11 +2,6 @@
 cd /tmp
 # create hosts
 echo itClassroom01 > hosts
-echo itClassroom02 > hosts
-echo itClassroom03 > hosts
-echo itClassroom04 > hosts
-echo itClassroom05 > hosts
-
 
 # grab IP addresses from hosts
 for node in $(cat hosts); do

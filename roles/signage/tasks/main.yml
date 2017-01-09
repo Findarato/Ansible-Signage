@@ -1,6 +1,23 @@
 ---
+
+- name: Create Symlink to make editing Autostart easier
+  file:
+    src: '.config/lxsession/LXDE-pi/autostart'
+    dest: '/home/pi/autostart'
+    state: link
+
+- name: Copy foldermap script to Pi
+  copy:
+    src: "foldermap.sh"
+    dest: "/home/pi/foldermap.sh"
+    owner: pi
+    group: pi
+    mode: 0700
+
+
 - include: packages.yml
 - include: system.yml
+- include: RAMdisk.yml
 
 #- name: Download latest Signage and use it.
 #  git: repo=https://github.com/WestchesterPublicLibrary/WPLsignage.git dest=/opt/signage update=yes

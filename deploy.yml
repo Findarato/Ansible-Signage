@@ -7,10 +7,9 @@
       apt: update_cache=yes cache_valid_time=3600
 
   roles:
-    - common
-    - ramdisk
+    - Base
     # This is an optional Package to monitor your pi. Comment this to
     # Disable the SNMP and NRPE monitoring
     - monitoring
-#    - signage
+    - signage
 #    - reboot

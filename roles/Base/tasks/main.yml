@@ -1,13 +1,9 @@
 ---
-
-- name: Create Symlink to make editing Autostart easier
-  file:
-      src: '.config/lxsession/LXDE-pi/autostart'
-      dest: '/home/pi/autostart'
-      state: link
-
 # Remove Files
-- apt: state=absent purge=yes name={{item}}
+- apt:
+    state: absent
+    purge: yes
+    name: "{{item}}"
   with_items:
     - transmission
     - hexchat
@@ -15,7 +11,9 @@
     - pidgin
 
 # Install Files
-- apt: state=present name={{item}}
+- apt:
+    state: present
+    name: "{{item}}"
   with_items:
     - python-software-properties
     - htop

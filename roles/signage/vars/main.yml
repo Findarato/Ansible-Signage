@@ -1,2 +1,2 @@
 ---
-signage_url: "https://signage.wpl.lib.in.us"
+kiosk_url:  "http://wpl-elk.library.wpl.lib.in.us/app/kibana#/dashboard/Windows-Computers-1080?embed=true&_g=(refreshInterval%3A(display%3A'30%20minutes'%2Cpause%3A!f%2Csection%3A2%2Cvalue%3A1800000)%2Ctime%3A(from%3Anow%2Fd%2Cinterval%3Aauto%2Cmode%3Aquick%2Ctimezone%3AAmerica%2FChicago%2Cto%3Anow%2Fd))"
