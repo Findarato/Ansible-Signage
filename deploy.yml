@@ -1,10 +1,13 @@
 ---
-- name: "Deploy Signage setup on RASPBIAN JESSIE WITH PIXEL"
+- name: Deploy Signage setup on RASPBIAN JESSIE WITH PIXEL
   hosts: all
   become: true
   pre_tasks:
     - name: Update apt cache if needed.
       apt: update_cache=yes cache_valid_time=3600
+
+	- name: Upgrade Packages
+	  apt: upgrade=full
 
   roles:
     - Base
@@ -12,4 +15,4 @@
     # Disable the SNMP and NRPE monitoring
     - monitoring
     - signage
-#    - reboot
+    - reboot
