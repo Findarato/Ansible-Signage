@@ -4,13 +4,14 @@
 thomas
 
 [thomas]
-192.168.10.13
+rpi-tserverroomdisplay.hardware.library.wpl.lib.in.us
+makergearm2.hardware.library.wpl.lib.in.us
 
 [hageman]
 
 
 [signage:vars]
 ansible_user=pi
-ansible_ssh_private_key_file=~/.ssh/remote.pub
+ansible_ssh_private_key_file=~/.ssh/ansible
 deploy_target=pi
 host_key_checking=false

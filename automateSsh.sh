@@ -3,6 +3,6 @@
 #
 mkdir ~/.ssh
 mkdir ~/.ssh && chmod 700 ~/.ssh && cd ~/.ssh/
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/remote
-ssh-copy-id -i ~/.ssh/remote.pub user@host
-ssh-add ~/.ssh/remote.pub
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/ansible
+ssh-copy-id -i ~/.ssh/ansible.pub user@host
+ssh-add ~/.ssh/ansible.pub

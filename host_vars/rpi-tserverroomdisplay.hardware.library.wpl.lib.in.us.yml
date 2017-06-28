@@ -1,0 +1,2 @@
+update_packages: true
+kiosk_url:  "http://wpl-docker01:3000/playlists/play/1"
