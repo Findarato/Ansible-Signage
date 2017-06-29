@@ -1,0 +1,9 @@
+---
+- name: Deploy Signage setup on RASPBIAN JESSIE WITH PIXEL
+  hosts: all
+  become: true
+  roles:
+    - Base
+    - monitoring
+    - signage
+    - reboot

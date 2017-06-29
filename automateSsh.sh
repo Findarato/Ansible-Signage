@@ -3,6 +3,8 @@
 #
 mkdir ~/.ssh
 mkdir ~/.ssh && chmod 700 ~/.ssh && cd ~/.ssh/
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/ansible
+if [! -f $HOME/.ssh/ansible.pub]
+	ssh-keygen -t rsa -b 4096 -f ~/.ssh/ansible
+fi
 ssh-copy-id -i ~/.ssh/ansible.pub user@host
 ssh-add ~/.ssh/ansible.pub

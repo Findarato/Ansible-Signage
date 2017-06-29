@@ -1,6 +1,15 @@
 ---
+- name: Update apt cache if needed.
+  apt: update_cache=yes cache_valid_time=36000
+  when: update_packages == true
+
+- name: Upgrade Packages
+  apt: upgrade=full
+  when: update_packages == true
+
 # Remove Files
-- apt:
+- name: Remove un used programs
+  apt:
     state: absent
     purge: yes
     name: "{{item}}"
@@ -11,18 +20,25 @@
     - pidgin
 
 # Install Files
-- apt:
+- name: Install Useful programs
+  apt:
     state: present
     name: "{{item}}"
   with_items:
     - python-software-properties
     - ufw
 
+- name: Enableing UFW
+  ufw:
+    state: enabled
+
 - name: Allow OpenSSH though Firewall
   ufw:
     rule: allow
     name: OpenSSH
 
-- name: Enableing UFW
-  ufw:
-    state: enabled
+# - name: Allow httpd though Firewall
+#   ufw:
+#     rule: allow
+#     name: httpd
+

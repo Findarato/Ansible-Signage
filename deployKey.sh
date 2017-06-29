@@ -1,7 +1,10 @@
 #!/bin/bash
 cd /tmp
 # create hosts
-echo itClassroom01 > hosts
+rm -f hosts
+echo rpi-hsignage01.hardware >> hosts
+echo rpi-tsignage01.hardware >> hosts
+echo rpi-tsignage02.hardware >> hosts
 
 # grab IP addresses from hosts
 for node in $(cat hosts); do
@@ -11,7 +14,7 @@ done
 # add ssh keys for both hostname and ip for each host
 for node in $(cat hosts); do
   ssh-keyscan -H $node >> ~/.ssh/known_hosts
-  ssh-copy-id -i ~/.ssh/remote pi@$node
+  ssh-copy-id -i ~/.ssh/ansible.pub -o PreferredAuthentications=password -o PubkeyAuthentication=no pi@$node 
 
 done
 

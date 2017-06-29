@@ -5,6 +5,9 @@
   poll: 0
   ignore_errors: true
 
+- name: Pause for reboot to start
+  pause:
+    seconds: 5
 
 - name:      waitForComputer
   become: false

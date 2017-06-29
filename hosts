@@ -2,13 +2,16 @@
 
 [signage:children]
 thomas
+hageman
 
 [thomas]
 rpi-tserverroomdisplay.hardware.library.wpl.lib.in.us
-makergearm2.hardware.library.wpl.lib.in.us
+#makergearm2.hardware.library.wpl.lib.in.us
+#rpi-tsignage01.hardware
+#rpi-tsignage02.hardware
 
 [hageman]
-
+#rpi-hsignage01.hardware
 
 [signage:vars]
 ansible_user=pi
